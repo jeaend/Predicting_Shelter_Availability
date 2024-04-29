@@ -37,7 +37,7 @@ def preprocess_climate_data(url):
     climate_df['local_date'] = pd.to_datetime(climate_df['local_date'])
     climate_df.sort_values(by='local_date', inplace=True)
     climate_df['local_date'] = climate_df['local_date'].dt.strftime('%d.%m.%y')
-    climate_df['local_date'] = pd.to_datetime(climate_df['local_date'])
+    climate_df.rename(columns={'local_date': 'date'}, inplace=True)
 
     
     # sort by local_date, should be the case already -- making sure the rolling window works 
@@ -53,10 +53,7 @@ def preprocess_climate_data(url):
 
 
 # retrieves correct and relevant data from shelter
-def preprocess_climate_data(urls):
-    columns_to_keep = ['date', 'location_city', 'sector', 'program_model', 'overnight_service_type',
-                       'occupied_rooms', 'unoccupied_rooms']
-    
+def preprocess_shelter_data(urls):
     # read data from each URL into df
     dfs = [pd.read_csv(url, index_col=False) for url in urls]
 
@@ -81,19 +78,17 @@ def preprocess_climate_data(urls):
     shelter_df['location_city'] = shelter_df.apply(lambda row: shelter_id_mapping.get(row['shelter_id'], row['location_city']), axis=1)
     shelter_df.loc[shelter_df['shelter_id'] == 27, 'location_city'] = 'Toronto'
 
-    # drop unwanted columns
-    drop_columns = [col for col in shelter_df.columns if col not in columns_to_keep]
-    shelter_df.drop(columns=drop_columns, inplace=True)
-
     # clean values
     shelter_df['capacity_type'] = shelter_df['capacity_type'].map(lambda x: x.split(' ')[0] if isinstance(x, str) else x)
         # turn room and beds into general unit
     shelter_df['taken_units'] = shelter_df.apply(lambda row: row['occupied_rooms'] if row['capacity_type'] == 'Room' else row['occupied_beds'], axis=1)
     shelter_df['free_units'] = shelter_df.apply(lambda row: row['unoccupied_rooms'] if row['capacity_type'] == 'Room' else row['unoccupied_beds'], axis=1)
     shelter_df.drop(columns=['occupied_beds', 'unoccupied_beds', 'occupied_rooms', 'unoccupied_rooms'], inplace=True)
-
+   
     # add columns 
     shelter_df['capacity_rate'] = shelter_df['taken_units'] / (shelter_df['taken_units'] + shelter_df['free_units'])
     shelter_df['availability'] = shelter_df['free_units'] / (shelter_df['taken_units'] + shelter_df['free_units'])
 
-    return shelter_df
+    columns_to_keep = ['date', 'location_city', 'sector', 'overnight_service_type', 'capacity_type', 'taken_units', 'free_units', 'capacity_rate', 'availability']
+    
+    return shelter_df[columns_to_keep]

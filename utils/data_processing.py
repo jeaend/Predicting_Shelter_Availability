@@ -13,7 +13,7 @@ def preprocess_climate_data(url):
     keep_columns = ['LOCAL_DATE', 'MIN_TEMPERATURE', 'MEAN_TEMPERATURE', 'MAX_TEMPERATURE', 'TOTAL_PRECIPITATION', 'SNOW_ON_GROUND']
     climate_df = pd.read_csv(url, usecols=keep_columns)
     climate_df.rename(columns=lambda x: x.strip().replace(" ", "_").lower(), inplace=True)
-
+    
     # fill snow_on_ground nan with 0
     climate_df['snow_on_ground'].fillna(0, inplace=True)
 

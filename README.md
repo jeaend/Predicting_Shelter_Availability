@@ -13,7 +13,7 @@ This project aims to predict the availability of shelter beds in Toronto using a
 [Instructions on how to use the project, including any necessary commands and parameters.]
 
 ## Data
-Please refer to [Data Processing](data/DATA_PROCESSING.md) for a comprehensive descriptin of the data and preprocessign decisions made. 
+**Please refer to [Data Processing](data/DATA_PROCESSING.md) for a comprehensive description of the data and processing decisions made.**
 
 The shelter occupancy data was sourced from the City of Toronto's Open Data Portal. You can find the dataset here.
 

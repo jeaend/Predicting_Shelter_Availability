@@ -4,6 +4,35 @@
 
 This project aims to predict the availability of shelter beds in Toronto using a machine learning model trained on historical shelter occupancy data and weather conditions. With shelter occupancy rates often reaching 100%, predicting availability as a binary (Y/N) variable presents a practical challenge. By integrating features such as temperature, weather conditions, holidays, and other relevant factors, the model will address the imbalanced nature of the data and provide valuable insights for resource allocation and planning. Additionally, the project explores methods for generalizing the model to other districts, laying the groundwork for potential scalability and wider applicability. 
 
+## Structure
+```
+data/
+├── raw/                    # Raw data files  
+│   ├── climate/            # Raw climate data files  
+│   │   └── climate-toronto2021-Q1-2024.csv  
+│   └── shelter/            # Raw shelter occupancy data files  
+│       ├── daily-shelter-overnight-service-occupancy-capacity-2021.csv  
+│       ├── daily-shelter-overnight-service-occupancy-capacity-2022.csv  
+│       ├── daily-shelter-overnight-service-occupancy-capacity-2023.csv  
+│       └── daily-shelter-overnight-service-occupancy-capacity-Q1:2024.csv  
+├── processed/              # Processed data files after cleaning  
+│   ├── climate/            # Processed climate data files  
+│   └── shelter/            # Processed shelter occupancy data files  
+├── Data_Processing.md      # Documentation detailing data processing steps  
+└── notebooks/              # Jupyter notebooks for data cleaning and processing  
+    ├── cleaning/           # Notebooks for cleaning raw data  
+    │   ├── climate_data_cleaning.ipynb   # Jupyter notebook for cleaning climate data  
+    │   └── shelter_data_cleaning.ipynb   # Jupyter notebook for cleaning shelter data  
+    └── data_processing.ipynb             # Jupyter notebook for data preprocessing pipeline  
+
+src/                        # Source code directory  
+├── data_processing.py      # Python script for data preprocessing tasks  
+├── modeling.py             # Python script for model development  
+└── evaluation.py           # Python script for model evaluation  
+
+README.md                   # Project README file providing an overview  
+```
+
 ## Installation
 
 [Instructions on how to install any dependencies required to run the project and how to set it up.]

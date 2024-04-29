@@ -42,7 +42,7 @@ README.md                   # Project README file providing an overview
 [Instructions on how to use the project, including any necessary commands and parameters.]
 
 ## Data
-**Please refer to [Data Processing](data/DATA_PROCESSING.md) for a comprehensive description of the data and processing decisions made.**
+**Please refer to [Data Processing](data/Data_Processing.md) for a comprehensive description of the data and processing decisions made.**
 
 The shelter occupancy data was sourced from the City of Toronto's Open Data Portal. You can find the dataset here.
 

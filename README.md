@@ -13,9 +13,13 @@ This project aims to predict the availability of shelter beds in Toronto using a
 [Instructions on how to use the project, including any necessary commands and parameters.]
 
 ## Data
+Please refer to [Data Processing](data/DATA_PROCESSING.md) for a comprehensive descriptin of the data and preprocessign decisions made. 
 
-The project utilizes historical shelter occupancy data provided by the City of Toronto, available at [link], and weather data from [source]. The datasets are preprocessed to handle missing values, format inconsistencies, and feature engineering.
+The shelter occupancy data was sourced from the City of Toronto's Open Data Portal. You can find the dataset here.
 
+The climate data for Toronto City from January 1, 2021, to March 31, 2024, was obtained from the Climate Data Canada website. You can download the data for Toronto City from the Climate Data Canada website using the specified parameters.
+
+This climate data will be used to analyze weather conditions and their impact on shelter occupancy rates.
 ## Methodology
 
 The methodology involves data preprocessing, feature engineering, model selection, and evaluation. Techniques such as oversampling, undersampling, or using algorithms designed to handle imbalanced data are applied. Model performance is assessed using metrics like precision, recall, F1-score, or area under the ROC curve (AUC-ROC).

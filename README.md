@@ -37,6 +37,8 @@ README.md                   # Project README file providing an overview
 
 [Instructions on how to install any dependencies required to run the project and how to set it up.]
 
+pip install sqlalchemy
+
 ## Usage
 
 [Instructions on how to use the project, including any necessary commands and parameters.]

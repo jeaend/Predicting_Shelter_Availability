@@ -21,7 +21,7 @@ def lag_columns(df, lag_columns, lagged_days):
 def extract_date_features(df, date_column):
     # convert date column to datetime
     df[date_column] = pd.to_datetime(df[date_column])
-    df = df.sort_values(by=date_column, inplace=True)
+    df = df.sort_values(by=date_column)
     # extract year, month, day, and day of week
     df['year'] = df[date_column].dt.year
     df['month'] = df[date_column].dt.month

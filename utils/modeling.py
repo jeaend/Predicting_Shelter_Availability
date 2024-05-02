@@ -1,17 +1,18 @@
 import pandas as pd 
 
-# lags the specified columns 
-def lag_columns(df, lag_columns, lagged_days):
-    for column in lag_columns:
-        for lag in lagged_days:
-            # create a new column with the lagged values
-            df[f'{column}_lag_{lag}'] = df[column].shift(lag)
-
-    # drop rows with NaN values resulting from the shift
-    df.dropna(inplace=True)
+def lag_columns(df, lag_columns):
+    # Create a copy of the DataFrame to avoid modifying the original
+    lagged_df = df.copy()
     
-    return df 
+    # Shift each specified column by one day and create new lagged columns
+    for column in lag_columns:
+        lagged_df[f'{column}_lag_1'] = df[column].shift(1)
 
+    # Drop rows with NaN values resulting from the shift
+    lagged_df.dropna(inplace=True)
+    
+    return lagged_df
+    
 # example-usage:
 # lag_columns = ['taken_units', 'free_units', 'capacity_rate', 'availability']
 # lagged_days = [1, 2, 3, 7]  

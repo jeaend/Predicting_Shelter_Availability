@@ -40,6 +40,7 @@ utils/                  # Helper Functions
 
 README.md                   # Project README file providing an overview  
 Shelter Capacity.key        # Keynotes file with presentation
+Shelter Capacity.pdf        # PDF version of the presenatation
 ```
 
 ## Installation
